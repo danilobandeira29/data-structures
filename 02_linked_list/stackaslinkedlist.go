@@ -5,8 +5,6 @@ import (
 )
 
 type StackAsLinkedList struct {
-	// do not need top, because start already solve the problem to run the linked list
-	top   *Node
 	start *Node
 	total int
 }
@@ -19,7 +17,6 @@ var (
 
 func NewStackAsLinkedList() *StackAsLinkedList {
 	return &StackAsLinkedList{
-		top:   nil,
 		start: nil,
 		total: 0,
 	}
@@ -32,8 +29,13 @@ func (s *StackAsLinkedList) Push(n int) error {
 	node := NewNode(n)
 	if s.IsEmpty() {
 		s.start = node
+		return nil
 	}
-	s.top = node
+	aux := s.start
+	for aux.Next() != nil {
+		aux = aux.Next()
+	}
+	aux.WriteNext(node)
 	s.total++
 	return nil
 }
@@ -42,12 +44,11 @@ func (s *StackAsLinkedList) Pop() (int, error) {
 	if s.IsEmpty() {
 		return -1, ErrEmptyPop
 	}
-	v := s.top.value
 	aux := s.start
 	for aux.Next() != nil {
 		aux = aux.Next()
 	}
-	s.top = aux
+	v := aux.value
 	s.total--
 	return v, nil
 }
@@ -57,5 +58,5 @@ func (s *StackAsLinkedList) IsFull() bool {
 }
 
 func (s *StackAsLinkedList) IsEmpty() bool {
-	return s.top == nil
+	return s.start == nil
 }
