@@ -30,17 +30,17 @@ func (l *LinkedList) Del() int {
 	return v.value
 }
 
-func (l LinkedList) List() []byte {
-	result := []byte{}
+func (l LinkedList) List() []int {
+	result := []int{}
 	if l.firstElement == nil {
 		return result
 	}
 	aux := l.firstElement
 	for aux.Next() != nil {
-		result = append(result, byte(aux.value))
+		result = append(result, aux.value)
 		aux = aux.Next()
 	}
-	result = append(result, byte(aux.value))
+	result = append(result, aux.value)
 	return result
 }
 
