@@ -8,16 +8,20 @@ func TestQueue(t *testing.T) {
 		t.Error("queue must init empty")
 	}
 	elements := []int{10, 5, 11, 55}
-	for _, e := range elements {
-		q.Enqueue(e)
+	for !q.IsFull() {
+		for _, e := range elements {
+			q.Enqueue(e)
+		}
 	}
 	if !q.IsFull() {
 		t.Error("queue must be full")
 	}
-	for _, e := range elements {
-		removed := q.Dequeue()
-		if removed != e {
-			t.Errorf("element expected to be %d but return %d", e, removed)
+	for !q.IsEmpty() {
+		for _, e := range elements {
+			removed := q.Dequeue()
+			if removed != e {
+				t.Errorf("element expected to be %d but return %d", e, removed)
+			}
 		}
 	}
 	if !q.IsEmpty() {
