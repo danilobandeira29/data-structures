@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/danilobandeira29/data-structs/stack"
+	stack "github.com/danilobandeira29/data-structs/00_stack"
 )
 
 func Is(s string) bool {
