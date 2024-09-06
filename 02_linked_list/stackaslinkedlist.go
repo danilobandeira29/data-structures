@@ -5,7 +5,7 @@ import (
 )
 
 type StackAsLinkedList struct {
-	// do not need top, because start already solve the problem to run the linked list
+	// do not need top, because start already solve the problem to run the linked list. branch for pull request refactored/stackaslinkedlist
 	top   *Node
 	start *Node
 	total int
