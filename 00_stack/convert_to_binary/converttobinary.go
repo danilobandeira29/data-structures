@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 
-	stack "github.com/danilobandeira29/data-structs/00_stack"
+	stack "www.github.com/danilobandeira29/data-structures/00_stack"
 )
 
 func ConvertDecimalToBinary(n int) []byte {
