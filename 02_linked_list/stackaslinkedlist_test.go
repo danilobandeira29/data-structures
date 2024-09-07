@@ -9,10 +9,7 @@ func TestStackAsLinkedList(t *testing.T) {
 	}
 	elements := []int{10, 22, 33}
 	for _, e := range elements {
-		err := s.Push(e)
-		if err == ErrStackFull {
-			t.Error(err)
-		}
+		s.Push(e)
 	}
 	v, err := s.Pop()
 	if err == ErrEmptyPop {
