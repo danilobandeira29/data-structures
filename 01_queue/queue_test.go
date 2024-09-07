@@ -3,7 +3,7 @@ package queue
 import "testing"
 
 func TestQueue(t *testing.T) {
-	q := NewQueue()
+	q := NewQueue[int]()
 	if !q.IsEmpty() {
 		t.Error("queue must init empty")
 	}
