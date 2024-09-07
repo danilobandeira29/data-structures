@@ -5,13 +5,13 @@ import "testing"
 func TestLinkedList(t *testing.T) {
 	l := NewLinkedList()
 	FIRST_ELEMENT := 44
-	l.Insert(FIRST_ELEMENT)
-	l.Insert(22)
-	l.Insert(33)
+	l.Push(FIRST_ELEMENT)
+	l.Push(22)
+	l.Push(33)
 	if l.IsEmpty() {
 		t.Error("linkedlist: expected to have elements\n")
 	}
-	e := l.Del()
+	e := l.Pop()
 	if e != FIRST_ELEMENT {
 		t.Errorf("linkedlist: first element removed expected %d got instead %d\n", FIRST_ELEMENT, e)
 	}

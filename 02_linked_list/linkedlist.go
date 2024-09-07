@@ -10,7 +10,7 @@ func NewLinkedList() *LinkedList {
 	}
 }
 
-func (l *LinkedList) Insert(n int) {
+func (l *LinkedList) Push(n int) {
 	node := NewNode(n)
 	if l.firstElement == nil {
 		l.firstElement = node
@@ -24,7 +24,7 @@ func (l *LinkedList) Insert(n int) {
 }
 
 // Del expects that the client check if List is empty
-func (l *LinkedList) Del() int {
+func (l *LinkedList) Pop() int {
 	v := l.firstElement
 	l.firstElement = l.firstElement.Next()
 	return v.value
