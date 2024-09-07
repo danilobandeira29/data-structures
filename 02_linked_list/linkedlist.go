@@ -23,7 +23,7 @@ func (l *LinkedList) Push(n int) {
 	aux.WriteNext(node)
 }
 
-// Del expects that the client check if List is empty
+// Pop expects that the client check if List is empty
 func (l *LinkedList) Pop() int {
 	v := l.firstElement
 	l.firstElement = l.firstElement.Next()
