@@ -10,7 +10,7 @@ func GenerateRandomSlice(size int) []int {
 	result := []int{}
 	for i := 0; i < size; i++ {
 		n := rand.Intn(random_until)
-		for In(result, n) {
+		for Contains(result, n) {
 			n = rand.Intn(random_until)
 		}
 		result = append(result, n)
@@ -18,7 +18,7 @@ func GenerateRandomSlice(size int) []int {
 	return result
 }
 
-func In(s []int, n int) bool {
+func Contains(s []int, n int) bool {
 	for _, v := range s {
 		if v == n {
 			return true
