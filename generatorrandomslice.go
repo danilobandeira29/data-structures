@@ -26,3 +26,11 @@ func Contains(s []int, n int) bool {
 	}
 	return false
 }
+
+func GenerateDecreasingStartFrom(size int) []int {
+	result := []int{}
+	for i := size; i >= 0; i-- {
+		result = append(result, i)
+	}
+	return result
+}
