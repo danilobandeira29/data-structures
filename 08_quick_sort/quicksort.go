@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package quicksort
 
 /*
   [25, 12, 48, 37, 57, 92, 33]
@@ -28,37 +26,41 @@ import "fmt"
     array[start], array[up] = array[up], pivot
 */
 
-var arr = []int{25, 57, 48, 37, 12, 92, 33}
+type quickSort struct {
+	values []int
+}
 
-func partition(start, end int) int {
-	pivot := arr[start]
+func (q *quickSort) partition(start, end int) int {
+	pivot := q.values[start]
 	down := start
 	up := end
 	for down < up {
-		for arr[down] <= pivot && down < up {
+		for q.values[down] <= pivot && down < up {
 			down++
 		}
-		for arr[up] > pivot {
+		for q.values[up] > pivot {
 			up--
 		}
 		if down < up {
-			arr[down], arr[up] = arr[up], arr[down]
+			q.values[down], q.values[up] = q.values[up], q.values[down]
 		}
 	}
-	arr[start], arr[up] = arr[up], pivot
+	q.values[start], q.values[up] = q.values[up], pivot
 	return up
 }
 
-func QuickSort(start, end int) {
+func (q *quickSort) do(start, end int) {
 	if start >= end {
 		return
 	}
-	pivot := partition(start, end)
-	QuickSort(start, pivot-1) // aplicando para elementos menores que o pivot, antes dele(que não estão ordenados)
-	QuickSort(pivot+1, end)   // aplicando para elementos maiores que o pivot, depois dele(que não estão ordenados)
+	pivot := q.partition(start, end)
+	q.do(start, pivot-1) // aplicando para elementos menores que o pivot, antes dele(que não estão ordenados)
+	q.do(pivot+1, end)   // aplicando para elementos maiores que o pivot, depois dele(que não estão ordenados)
 }
 
-func main() {
-	QuickSort(0, len(arr)-1)
-	fmt.Println(arr)
+func Sort(v []int) {
+	q := &quickSort{
+		values: v,
+	}
+	q.do(0, len(v)-1)
 }
