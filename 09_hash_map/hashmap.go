@@ -32,8 +32,12 @@ func NewHashMap() *HashMap {
 
 func (h *HashMap) Put(n *Node) {
 	register := h.nodes[n.HashCode()]
-	if register == nil || register.key == n.key {
+	if register == nil {
 		h.nodes[n.HashCode()] = n
+		return
+	}
+	if register.key == n.key {
+		h.nodes[n.HashCode()].value = n.value
 		return
 	}
 	for register.next != nil {
@@ -62,8 +66,9 @@ func (h HashMap) Get(k int) *Node {
 // 		hashmap.NewNode(2224, "mensagem node 2"),
 // 		hashmap.NewNode(4567, "mensagem node 3"),
 // 		hashmap.NewNode(200, "mensagem node 4")
-// 	n5 := hashmap.NewNode(9999, "nova mensagem pro node 1")
+// 	n5 := hashmap.NewNode(999, "nova mensagem pro node 1")
 // 	n6 := hashmap.NewNode(99999, "same index")
+// 	n7 := hashmap.NewNode(999, "novo novo, zerado")
 // 	hashMap := hashmap.NewHashMap()
 // 	hashMap.Put(n1)
 // 	hashMap.Put(n2)
@@ -71,5 +76,6 @@ func (h HashMap) Get(k int) *Node {
 // 	hashMap.Put(n4)
 // 	hashMap.Put(n5)
 // 	hashMap.Put(n6)
-// 	fmt.Println(hashMap.Get(99999))
+// 	hashMap.Put(n7)
+// 	fmt.Println(hashMap.Get(999))
 // }
