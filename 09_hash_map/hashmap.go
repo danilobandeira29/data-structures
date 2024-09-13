@@ -18,6 +18,10 @@ func (n *Node) HashCode() int {
 	return n.key % 100
 }
 
+func (n Node) Value() string {
+	return n.value
+}
+
 // Hashmap
 // this implementation create a Node when has collision, and get last Node in that Key to be the next last element
 type HashMap struct {
