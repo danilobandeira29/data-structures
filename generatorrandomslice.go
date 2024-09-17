@@ -4,14 +4,14 @@ import (
 	"math/rand"
 )
 
-var random_until = 10000
+var randomUntil = 10000
 
 func GenerateRandomSlice(size int) []int {
-	result := []int{}
+	var result []int
 	for i := 0; i < size; i++ {
-		n := rand.Intn(random_until)
+		n := rand.Intn(randomUntil)
 		for Contains(result, n) {
-			n = rand.Intn(random_until)
+			n = rand.Intn(randomUntil)
 		}
 		result = append(result, n)
 	}
@@ -28,7 +28,7 @@ func Contains(s []int, n int) bool {
 }
 
 func GenerateDecreasingStartFrom(size int) []int {
-	result := []int{}
+	var result []int
 	for i := size; i >= 0; i-- {
 		result = append(result, i)
 	}
