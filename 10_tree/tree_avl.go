@@ -46,7 +46,8 @@ func (t *AVL) Insert(newNode *Node) *AVL {
 	if tree.element.Value() > t.element.Value() && t.right != nil {
 		t.right = t.right.Insert(newNode)
 	}
-	return t
+	t.Balance()
+	return t.MakeBalance()
 }
 
 func (t *AVL) Exists(v int) bool {
@@ -104,7 +105,8 @@ func (t *AVL) Remove(n *Node) *AVL {
 	if n.Value() > t.element.Value() && t.right != nil {
 		t.right = t.right.Remove(n)
 	}
-	return t
+	t.Balance()
+	return t.MakeBalance()
 }
 
 func (t *AVL) PreOrder() {
@@ -282,3 +284,13 @@ func (t *AVL) DoubleRotateLeft() *AVL {
 func (t *AVL) PrintBalance() {
 	fmt.Printf("node %d has balance %d\n", t.element.Value(), t.balance)
 }
+
+//func main() {
+//	tri := tree.NewTreeAVL()
+//	tri = tri.Insert(tree.NewNode(10))
+//	tri = tri.Insert(tree.NewNode(15))
+//	tri = tri.Insert(tree.NewNode(7))
+//	tri = tri.Insert(tree.NewNode(9))
+//	tri = tri.Insert(tree.NewNode(3))
+//	tri = tri.Insert(tree.NewNode(8))
+//	tri.PreOrder()
